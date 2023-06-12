@@ -12,14 +12,15 @@ response = s3.list_objects_v2(Bucket="asontiboto3")
 print(response)
 print('-------------------------------------------------')
 
-#def list_objects(client, bucket, prefix=''):
-    #keys = []
-    #for content in response2['Contents']:
-       # keys.append(content['Key'])
-    #return keys
+def list_objects(client, bucket, prefix=''):
+    keys = []
+    response2 = client.list_objects_v2(Bucket=bucket, Prefix=prefix)
+    for content in response2['Contents']:
+       keys.append(content['Key'])
+    return keys
 
-#response2 = list_objects(s3, 'asontiboto3', '/')  #works with the def
-#print(response2)
+response2 = list_objects(s3, 'asontiboto3')  #works with the def
+print(response2)
 
 print('-------------------------------------------------')
 
